@@ -5,6 +5,7 @@
 /coverage/
 /db/
 /doc/
+/examples/log/*.log
 /log/
 /pkg/
 /spec/reports/
