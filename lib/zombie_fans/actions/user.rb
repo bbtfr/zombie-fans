@@ -5,8 +5,8 @@ module ZombieFans::Actions
         page.form_with(action: "/users/#{login}") do |form|
           name = sample_display_name
           blog = sample_result Faker::Internet.url, 2
-          company = sample_result Faker::Company.name
-          location = Faker::Address.city
+          company = sample_result Faker::Company.name, 1, 2
+          location = sample_result Faker::Address.city, 1, 2
 
           log_action 'UpdateProfile', "with name: #{name}, blog: #{blog || 'nil'}, company: #{company || 'nil'}, location: #{location || 'nil'}."
 
@@ -48,8 +48,8 @@ module ZombieFans::Actions
       names = [names.join('-').downcase, names.first.downcase, names.last.downcase, name, name, name, name, name, names.first, names.last].sample
     end
 
-    def sample_result result, weight = 1
-      ([nil] * weight + [result]).sample
+    def sample_result result, weight1 = 1, weight2 = 1
+      ([nil] * weight1 + [result] * weight2).sample
     end
   end
 end
