@@ -21,6 +21,6 @@
 
 set :output, "log/crontab.log"
 job_type :bundle_exec,  "cd :path && bundle exec :task :output"
-every 2.hours do
-  bundle_exec "ruby examples/star_my_repo.rb"
+every 1.hours do
+  bundle_exec "ruby star_my_repo.rb"
 end

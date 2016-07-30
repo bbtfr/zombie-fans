@@ -30,7 +30,7 @@ module ZombieFans::Actions
 
       def sample_login
         names = name.split(' ')
-        [names.join('-'), names.join('-'), names.join('-'), names.first, names.last, name[0] + names.last, name[0..1] + '-' + names.last].sample.downcase
+        [names.join('-').downcase, names.join('-').downcase, names.join.downcase, names.first.downcase, names.last.downcase, (name[0] + names.last).downcase, (name[0..1] + '-' + names.last).downcase, names.join, names.join, names.first, names.last, Faker::Internet.user_name, Faker::Internet.user_name].sample
       end
 
       def fill_signup_page page
