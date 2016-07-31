@@ -14,6 +14,7 @@ module ZombieFans
   class Robot
     include Actions::Logger
     include Actions::Auth
+    include Actions::Confirm
     include Actions::Avatar
     include Actions::Repo
     include Actions::User

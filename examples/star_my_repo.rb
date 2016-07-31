@@ -7,6 +7,8 @@ robot = ZombieFans::Robot.new
 robot.sign_up
 robot.upload_avatar
 robot.update_profile
+robot.add_confirmable_email
+robot.set_email_private
 
 robot.star_repo repos.sample
 robot.follow_user 'bbtfr'
