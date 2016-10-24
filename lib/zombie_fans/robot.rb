@@ -10,6 +10,17 @@ Dir[glob].each do |file|
   require file
 end
 
+class Mechanize::Page
+  def preview
+    file = Tempfile.new(['mechanize', '.html'])
+    file.write(self.content)
+    file.close
+    system("open #{file.path}")
+    sleep 3
+    file.unlink
+  end
+end
+
 module ZombieFans
   class Robot
     include Actions::Logger

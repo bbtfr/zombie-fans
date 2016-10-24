@@ -40,5 +40,25 @@ module ZombieFans::Actions
       page = agent.post(star_repo_url, query, header)
       response = JSON.parse page.body
     end
+
+    def make_repo_private repo
+      toggle_permission repo, "private"
+    end
+
+    def make_repo_public repo
+      toggle_permission repo, "public"
+    end
+
+    def toggle_permission repo, permission
+      page = agent.get("https://github.com/#{repo}/settings")
+      button = page.at('a[href="#visibility_confirm"]')
+      return unless button && button.text == "Make #{permission}"
+
+      log_action 'TogglePermission', "#{repo} #{permission}."
+
+      page = page.form_with(action: "/#{repo}/settings/toggle_permission") do |form|
+        form['verify'] = repo
+      end.submit
+    end
   end
 end

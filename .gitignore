@@ -6,6 +6,8 @@
 /db/
 /doc/
 /examples/log/*.log
+/examples/.env
+/examples/daily_check.rb
 /log/
 /pkg/
 /spec/reports/
